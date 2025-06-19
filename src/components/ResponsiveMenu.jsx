@@ -10,7 +10,7 @@ const ResponsiveMenu = ({ open , links }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className='absolute top-20 left-0 w-full h-screen z-0 overflow-hidden'
+                        className='absolute top-20 left-0 w-full h-screen z-20 overflow-hidden'
                     >
                         <div className='text-xl font-semibold uppercase bg-orange-300 
                         text-white py-10 m-6 rounded-3xl'>
