@@ -6,9 +6,11 @@ import {
     FormLabel
 } from '@chakra-ui/react'
 import '../design/login.css'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -28,7 +30,7 @@ const Login = () => {
             const basicAuth = 'Basic ' + btoa(`${formData.username}:${formData.password}`);
             console.log(basicAuth);
             const response = await fetch('http://localhost:1234/menuItems/all', {
-                
+
                 headers: {
                     Authorization: basicAuth
                 }
@@ -36,6 +38,7 @@ const Login = () => {
             if (!response.ok) {
                 throw new Error('network error');
             }
+            navigate('/');
             const res = await response.json();
             console.log(res);
         }
@@ -44,21 +47,24 @@ const Login = () => {
         }
     }
     return (
-        <div className='main-cont'>
-            <Container className='login-cont'>
-                <Heading className='mb-4 text-lg text-center text-yellow-400 font-mono hover:text-yellow-200'>
+        <div className='main-cont '>
+            <Container className='login-cont items-center'>
+                <Heading className='mb-4 text-2xl  text-center text-yellow-400 font-semibold  hover:text-yellow-200'>
                     Login
                 </Heading>
-                <form action="" onSubmit={submitHandler}>
+                <form action="" onSubmit={submitHandler} className='border-2 rounded-md bg-transparent p-10 font-semibold'>
                     <FormControl className='form '>
-                        <FormLabel htmlFor='username' className='text-2xl text-red-400 font-bold font-mono'>Username</FormLabel>
-                        <Input id='username' type='text' name='username' value={formData.username} onChange={handleChange} width={'15.0'} border={'black 1px solid'} 
-                            className='font-bold text-lg' required />
-                        <FormLabel htmlFor='password'>Password</FormLabel>
-                        <Input id='password' type='password' name='password' value={formData.password} onChange={handleChange} border={'black 1px solid'} width={'15.0'} required />
+                        <FormLabel htmlFor='username' 
+                        className='text-2xl text-red-400  font-semibold'
+                        >Username</FormLabel>
+                        <Input id='username' type='text' name='username' value={formData.username} onChange={handleChange} width={'15.0'} border={'black 1px solid'}
+                            className=' p-1 mt-2 ' required />
+                        <FormLabel htmlFor='password' className='mt-3'>Password</FormLabel>
+                        <Input id='password' type='password' name='password' value={formData.password} onChange={handleChange} border={'black 1px solid'} width={'15.0'}
+                            className=' p-1 mt-2 rounded-md' required />
                         <Container mt={8} gap={4}>
-                            <Button type='submit' variant={'outline'} border={'black 1px solid'} color={'black'} width={'15.0'} _hover={{ bg: 'black', color: 'white' }}>
-                                Submit
+                            <Button type='submit' className='mt-3 text-white bg-orange-400 border-2 border-orange-500 hover:bg-white hover:text-orange-400 font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
+                                Login
                             </Button>
                         </Container>
                     </FormControl>
