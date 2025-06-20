@@ -7,25 +7,32 @@ import { BsArrowRightCircle } from 'react-icons/bs';
 const CategoryList = () => {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectCategory] =useState("");
-    const params = useSearchParams();
+    const [searchParams] = useSearchParams();
+    const [items, setItem] = useState([]);
+
     useEffect(() => {
         const fetchCategories = async () => {
             const data = await GetCategory();
             setCategories(data);
-            setSelectCategory(params.get('category'))
+            setSelectCategory(searchParams.get('category'))
         }
         fetchCategories();
-    },[params])
+    },[searchParams])
     return (
         <div className='mt-4 px-10 relative '>
             <div className='flex gap-4 overflow-auto scrollbar-hide '>
                 {categories.length > 0 ? (
                     categories.map((categorie, index) => (
-                    <Link href={`?category=${categorie.id}&name=${encodeURIComponent(categorie.name)}`} key={index}
-                    className='flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28
-                    hover:border-orange-400 hover:bg-orange-50 cursor-pointer group'
+                    <Link to={`?category=${categorie.id}&name=${encodeURIComponent(categorie.name)}`} 
+                    key={index}
+                    className={`flex flex-col items-center gap-2 border p-3 rounded-xl min-w-28
+                        hover:border-orange-400 hover:bg-orange-50 cursor-pointer group
+                        ${ selectedCategory == categorie.id&&'text-primary border-orange-400 bg-orange-50 '}
+                            `}
                     >
-                        <Image />
+                        <Image src={categorie.imgUrl} alt={`Image of ${categorie.name}`}
+                                width={40}
+                                height={40} />
                         <h2 className='object-contain text-sm font-medium group-hover:text-primary'>{categorie.name}</h2>
                     </Link>
                 ))

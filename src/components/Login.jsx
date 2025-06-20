@@ -54,8 +54,8 @@ const Login = () => {
                 </Heading>
                 <form action="" onSubmit={submitHandler} className='border-2 rounded-md bg-transparent p-10 font-semibold'>
                     <FormControl className='form '>
-                        <FormLabel htmlFor='username' 
-                        className='text-2xl text-red-400  font-semibold'
+                        <FormLabel htmlFor='username'
+                            className='text-2xl text-red-400  font-semibold'
                         >Username</FormLabel>
                         <Input id='username' type='text' name='username' value={formData.username} onChange={handleChange} width={'15.0'} border={'black 1px solid'}
                             className=' p-1 mt-2 ' required />
@@ -66,12 +66,15 @@ const Login = () => {
                             <Button type='submit' className='mt-3 text-white bg-orange-400 border-2 border-orange-500 hover:bg-white hover:text-orange-400 font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
                                 Login
                             </Button>
+                            <div className='font-bold'>
+                                <a href='/signup' className='text-black-400 text-sm'>Don't hava a Account ?</a>
+                            </div>
                         </Container>
                     </FormControl>
                 </form>
             </Container>
         </div>
-
+        
 
 
     )
