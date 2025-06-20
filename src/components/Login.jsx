@@ -48,6 +48,25 @@ const Login = () => {
         }
     }
     return (
+
+        <div className='main-cont '>
+            <Container className='login-cont items-center'>
+                <Heading className='mb-4 text-2xl  text-center text-yellow-400 font-semibold  hover:text-yellow-200'>
+                    Login
+                </Heading>
+                <form action="" onSubmit={submitHandler} className='border-2 rounded-md bg-transparent p-10 font-semibold'>
+                    <FormControl className='form '>
+                        <FormLabel htmlFor='username'
+                            className='text-2xl text-red-400  font-semibold'
+                        >Username</FormLabel>
+                        <Input id='username' type='text' name='username' value={formData.username} onChange={handleChange} width={'15.0'} border={'black 1px solid'}
+                            className=' p-1 mt-2 ' required />
+                        <FormLabel htmlFor='password' className='mt-3'>Password</FormLabel>
+                        <Input id='password' type='password' name='password' value={formData.password} onChange={handleChange} border={'black 1px solid'} width={'15.0'}
+                            className=' p-1 mt-2 rounded-md' required />
+                        <div class="text-sm">
+                                    <a href="#" class="font-semibold text-red-600 hover:text-indigo-500">Forgot password?</a>
+
         <div className='min-h-screen flex items-center justify-center bg-white px-4 sm:justify-start sm:pl-32 main-cont'>
             <div class="w-full max-w-md">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
@@ -80,6 +99,7 @@ const Login = () => {
 
                         <div>
                             <button type="submit" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Sign in</button>
+
                         </div>
                     </form>
                     <div className="mt-4 text-center text-sm text-gray-700">
@@ -95,7 +115,7 @@ const Login = () => {
 
 
         </div>
-
+        
 
 
     )

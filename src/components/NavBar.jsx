@@ -5,7 +5,9 @@ import { MdMenu } from "react-icons/md";
 import { IoFastFoodOutline } from "react-icons/io5";
 import ResponsiveMenu from './ResponsiveMenu';
 import { Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 const NavBar = () => {
+    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const links = [
         { title: "Home", href: "/", tooltip: "Go to Home" },
@@ -48,7 +50,8 @@ const NavBar = () => {
                         </button>
 
                         {/* Login Button */}
-                        <Button className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
+                        <Button  onClick={() => navigate('/login')}
+                            className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
                             Login
                         </Button>
                     </div>
