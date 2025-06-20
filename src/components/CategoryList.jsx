@@ -20,7 +20,7 @@ const CategoryList = () => {
     },[searchParams])
     return (
         <div className='mt-4 px-10 relative '>
-            <div className='flex gap-4 overflow-auto scrollbar-hide '>
+            <div className="flex gap-4 overflow-x-auto overflow-y-hidden whitespace-nowrap scrollbar-hide scroll-smooth">
                 {categories.length > 0 ? (
                     categories.map((categorie, index) => (
                     <Link to={`?category=${categorie.id}&name=${encodeURIComponent(categorie.name)}`} 

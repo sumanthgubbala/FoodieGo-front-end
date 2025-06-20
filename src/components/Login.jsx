@@ -69,9 +69,6 @@ const Login = () => {
                             <Button type='submit' className='mt-3 text-white bg-orange-400 border-2 border-orange-500 hover:bg-white hover:text-orange-400 font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
                                 Login
                             </Button>
-                            <div className='font-bold'>
-                                <a href='/signup' className='text-black-400 text-sm'>Don't hava a Account ?</a>
-                            </div>
                         </Container>
                     </FormControl>
                 </form>

@@ -4,7 +4,7 @@ import axios from "axios";
 const GetCategory = async()  =>{
 
     try{
-        const res = await axios.get("http://localhost:8080/category/home");
+        const res = await axios.get("http://localhost:1234/category/home");
     
     return res.data;
     }
@@ -18,7 +18,7 @@ export default GetCategory;
 
 export const GetRestaurants = async() =>{
     try{
-        const res = await axios.get("http://localhost:8080/restaurant/all");
+        const res = await axios.get("http://localhost:1234/restaurant/all");
        // console.log(res.data)
         return res.data;
     }catch(err){
@@ -28,7 +28,7 @@ export const GetRestaurants = async() =>{
 
 export const GetMenuItems = async() =>{
     try{
-        const res = await axios.get("http://localhost:8080/menuItems/all");
+        const res = await axios.get("http://localhost:1234/menuItems/all");
        // console.log(res.data)
         return res.data;
     }catch(err){

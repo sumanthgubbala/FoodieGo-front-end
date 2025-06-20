@@ -43,7 +43,7 @@ const Signup = () => {
     }
     return (
         <div>
-            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
                     <IoFastFoodOutline className="text-orange-400 text-5xl mb-4" />
                     <h1 className="text-2xl font-bold tracking-tight text-gray-900">FoodieGo</h1>
