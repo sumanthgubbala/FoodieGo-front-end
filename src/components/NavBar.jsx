@@ -14,7 +14,7 @@ const NavBar = () => {
     const { isLoggedIn, setIsLoggedIn } = AuthenticationHook(); // Context state
     const navigate = useNavigate();
     const links = [
-        { title: "Home", href: "/", tooltip: "Go to Home" },
+        { title: "Home", href: "/home", tooltip: "Go to Home" },
         { title: "Restaurants", href: "/restaurants", tooltip: "View Restaurants" },
         { title: "Category", href: "/categories", tooltip: "Browse Categories" },
         { title: "My Orders", href: "/orders", tooltip: "See Your Orders" },

@@ -18,7 +18,7 @@ const Login = () => {
         password: ''
     });
     sessionStorage.setItem('username', formData.username);
-    const { isLoggedIn, setIsLoggedIn } = AuthenticationHook();
+    const { login, setIsLoggedIn } = AuthenticationHook(); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,7 +42,7 @@ const Login = () => {
                 throw new Error('network error');
             }
             navigate('/home');
-            setIsLoggedIn(true);
+            login(formData.username);
             const res = await response.json();
             console.log(res);
         }
@@ -52,7 +52,7 @@ const Login = () => {
             console.error('error:', err);
         }
     }
-    return (
+    return (      
         <div className='min-h-screen flex items-center justify-center bg-white px-4 sm:justify-start sm:pl-32 main-cont'>
             <div class="w-full max-w-md">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
@@ -85,6 +85,7 @@ const Login = () => {
 
                         <div>
                             <button type="submit" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Sign in</button>
+
                         </div>
                     </form>
                     <div className="mt-4 text-center text-sm text-gray-700">
@@ -98,9 +99,6 @@ const Login = () => {
 
             </div>
         </div>
-
-
-
     )
 }
 

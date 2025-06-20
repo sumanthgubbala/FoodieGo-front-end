@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 
 const ProfileMenu = () => {
-  const { isLoggedIn, setIsLoggedIn,username } = AuthenticationHook();
+  const { isLoggedIn, setIsLoggedIn,username ,logout} = AuthenticationHook();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const containerRef = useRef();
@@ -18,9 +18,9 @@ const ProfileMenu = () => {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
-
   const handleAuth = () => {
     if (isLoggedIn) {
+      logout();
       setIsLoggedIn(false);
       sessionStorage.removeItem('isLoggedIn');
       navigate('/');
