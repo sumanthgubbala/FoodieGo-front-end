@@ -47,7 +47,7 @@ const Signup = () => {
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
                     <IoFastFoodOutline className="text-orange-400 text-5xl mb-4" />
                     <h1 className="text-2xl font-bold tracking-tight text-gray-900">FoodieGo</h1>
-                    <h3 className="mt-2 text-lg font-medium tracking-tight text-gray-900">Sign in to your account</h3>
+                    <h3 className="mt-2 text-lg font-medium tracking-tight text-gray-900">Sign up to your account</h3>
                 </div>
 
 
