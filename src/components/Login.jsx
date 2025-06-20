@@ -8,7 +8,8 @@ import {
 import '../design/login.css'
 import { useNavigate } from 'react-router-dom';
 import { IoFastFoodOutline } from "react-icons/io5";
-
+import { AuthenticationHook } from './ContextAuthentication';
+import NavBar from './NavBar';
 const Login = () => {
 
     const navigate = useNavigate();
@@ -16,7 +17,8 @@ const Login = () => {
         username: '',
         password: ''
     });
-
+    sessionStorage.setItem('username', formData.username);
+    const { isLoggedIn, setIsLoggedIn } = AuthenticationHook();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -39,11 +41,14 @@ const Login = () => {
             if (!response.ok) {
                 throw new Error('network error');
             }
-            navigate('/');
+            navigate('/home');
+            setIsLoggedIn(true);
             const res = await response.json();
             console.log(res);
         }
         catch (err) {
+            window.alert('Invalid username or password');
+            setIsLoggedIn(false);
             console.error('error:', err);
         }
     }
@@ -57,12 +62,12 @@ const Login = () => {
                 </div>
 
 
-                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border p-5 rounded-lg border-gray-300">
                     <form class="space-y-6" method="POST" onSubmit={submitHandler}>
                         <div>
                             <label for="email" class="block text-sm/6 font-medium text-gray-900">Username</label>
                             <div class="mt-2">
-                                <input type="text" name="username" id="username" required class="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6" value={formData.username} onChange={handleChange}/>
+                                <input type="text" name="username" id="username" required className="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6 border border-black" value={formData.username} onChange={handleChange}/>
                             </div>
                         </div>
 
@@ -92,8 +97,6 @@ const Login = () => {
                 </div>
 
             </div>
-
-
         </div>
 
 
