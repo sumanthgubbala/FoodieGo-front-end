@@ -29,7 +29,7 @@ const Login = () => {
         try {
             const basicAuth = 'Basic ' + btoa(`${formData.username}:${formData.password}`);
             console.log(basicAuth);
-            const response = await fetch('http://localhost:1234/menuItems/all', {
+            const response = await fetch('http://localhost:8080/menuItems/all', {
 
                 headers: {
                     Authorization: basicAuth
@@ -62,6 +62,9 @@ const Login = () => {
                         <FormLabel htmlFor='password' className='mt-3'>Password</FormLabel>
                         <Input id='password' type='password' name='password' value={formData.password} onChange={handleChange} border={'black 1px solid'} width={'15.0'}
                             className=' p-1 mt-2 rounded-md' required />
+                        <div class="text-sm">
+                                    <a href="#" class="font-semibold text-red-600 hover:text-indigo-500">Forgot password?</a>
+                        </div>
                         <Container mt={8} gap={4}>
                             <Button type='submit' className='mt-3 text-white bg-orange-400 border-2 border-orange-500 hover:bg-white hover:text-orange-400 font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
                                 Login
@@ -69,6 +72,7 @@ const Login = () => {
                         </Container>
                     </FormControl>
                 </form>
+                Dont have an account? <a href="/signup" className='text-orange-500 font-semibold'>Sign Up</a>
             </Container>
         </div>
 
