@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { GetMenuItems } from '../utils/apis';
+import { GetMenuItems, GetMenuItemsByCategory } from '../utils/apis';
 import MenuItemCard from './MenuItemCard';
 import { useSearchParams } from 'react-router-dom';
 
@@ -9,12 +9,23 @@ const MenuItems = () => {
 
     const name = searchParams.get('name');
 
+    const category = searchParams.get('category');
+
     useEffect(() => {
         const fetchMenuItems = async () => {
             const response = await GetMenuItems();
             setMenuItems(response);
         }
-        fetchMenuItems();
+        const fetchMenuItemsByCategory = async (category) => {
+            const response = await GetMenuItemsByCategory(category);
+            setMenuItems(response);
+        }
+        if (category) {
+            setMenuItems([]);
+            fetchMenuItemsByCategory(category);
+        } else {
+            fetchMenuItems();
+        }
     }, [searchParams])
     return (
         <div className='mt-5 px-10'>
@@ -27,7 +38,9 @@ const MenuItems = () => {
                     menuItems.map((item, index) => (
                         <MenuItemCard items={item} />
                     ))
-                ) : (<> </>)
+                ) : (<p className="w-full items-center text-primary font-medium text-center">
+                        No Items found
+                    </p>)
 
                 }
             </div>

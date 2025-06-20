@@ -5,6 +5,7 @@ const Signup = () => {
     //password matching
     const [signupData, setSignupData] = useState({
         email: '',
+        name: '',
         username: '',
         password: '',
         confirm_password: '',

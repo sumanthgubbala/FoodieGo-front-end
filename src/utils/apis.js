@@ -36,3 +36,13 @@ export const GetMenuItems = async() =>{
     }
 }
 
+
+export const GetMenuItemsByCategory = async(category) =>{
+    try{
+        const res = await axios.get(`http://localhost:1234/menuItems/category/${category}`);
+        console.log(res.data);
+        return res.data;
+    }catch(err){
+        throw err;
+    }
+}
