@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AuthenticationHook } from './ContextAuthentication';
 import NavBar from './NavBar';
+
 const Login = () => {
 
     const navigate = useNavigate();
@@ -18,8 +19,7 @@ const Login = () => {
         password: ''
     });
     sessionStorage.setItem('username', formData.username);
-    const { login, setIsLoggedIn } = AuthenticationHook(); 
-
+    const { login, setIsLoggedIn } = AuthenticationHook();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -38,8 +38,9 @@ const Login = () => {
                     Authorization: basicAuth
                 }
             });
+
             if (!response.ok) {
-                throw new Error('network error');
+                throw new Error('networak error');
             }
             navigate('/home');
             login(formData.username);
@@ -48,11 +49,12 @@ const Login = () => {
         }
         catch (err) {
             window.alert('Invalid username or password');
+            const errorResponse = err;
             setIsLoggedIn(false);
             console.error('error:', err);
         }
     }
-    return (      
+    return (
         <div className='min-h-screen flex items-center justify-center bg-white px-4 sm:justify-start sm:pl-32 main-cont'>
             <div class="w-full max-w-md">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
@@ -67,7 +69,7 @@ const Login = () => {
                         <div>
                             <label for="email" class="block text-sm/6 font-medium text-gray-900">Username</label>
                             <div class="mt-2">
-                                <input type="text" name="username" id="username" required className="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6 border border-black" value={formData.username} onChange={handleChange}/>
+                                <input type="text" name="username" id="username" required className="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6 border border-black" value={formData.username} onChange={handleChange} />
                             </div>
                         </div>
 
@@ -79,7 +81,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <div class="mt-2">
-                                <input type="password" name="password" id="password"  required class="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6" value={formData.password} onChange={handleChange}/>
+                                <input type="password" name="password" id="password" required class="block w-full rounded-md bg-transparent px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6" value={formData.password} onChange={handleChange} />
                             </div>
                         </div>
 
@@ -87,6 +89,7 @@ const Login = () => {
                             <button type="submit" class="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">Sign in</button>
 
                         </div>
+                        <span>{`$(errorResponse)`}</span>
                     </form>
                     <div className="mt-4 text-center text-sm text-gray-700">
                         Don't have an account?{' '}

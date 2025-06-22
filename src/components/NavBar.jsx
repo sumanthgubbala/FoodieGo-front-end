@@ -68,7 +68,7 @@ const NavBar = () => {
 
                         {/* Cart Button */}
                         <button>
-                            <PiShoppingCartThin className='text-2xl text-gray-700 hover:bg-orange-500 rounded-full hover:p-1 duration-200' />
+                            <PiShoppingCartThin className='text-2xl text-gray-700 hover:bg-orange-500 rounded-full hover:p-1 duration-200' onClick={()=>{navigate('/cart')}}/>
                         </button>
 
                         {/* Login/Logout Button */}
