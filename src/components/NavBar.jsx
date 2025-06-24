@@ -1,29 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartThin } from "react-icons/pi";
 import { MdMenu } from "react-icons/md";
 import { IoFastFoodOutline } from "react-icons/io5";
 import ResponsiveMenu from './ResponsiveMenu';
 import { Button } from '@chakra-ui/react';
+import { AuthenticationHook } from './ContextAuthentication'; // Custom hook from context
 import { useNavigate } from 'react-router-dom';
+import ProfileMenu from './ProfileMenu';
+
 const NavBar = () => {
-    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const { isLoggedIn, setIsLoggedIn } = AuthenticationHook(); // Context state
+    const navigate = useNavigate();
     const links = [
-        { title: "Home", href: "/", tooltip: "Go to Home" },
+        { title: "Home", href: "/home", tooltip: "Go to Home" },
         { title: "Restaurants", href: "/restaurants", tooltip: "View Restaurants" },
         { title: "Category", href: "/categories", tooltip: "Browse Categories" },
         { title: "My Orders", href: "/orders", tooltip: "See Your Orders" },
     ];
+<<<<<<< HEAD
     
+=======
+
+    const handleAuth = () => {
+        if (isLoggedIn) {
+            // Sign out logic
+            setIsLoggedIn(false);
+            sessionStorage.removeItem("isLoggedIn");
+            navigate('/'); // Redirect if needed
+        } else {
+            // Navigate to login
+            navigate('/');
+        }
+    };
+
+>>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
     return (
         <>
             <nav>
-                <div className='p-10 flex justify-between items-center py-8 '>
+                <div className='p-10 flex justify-between items-center py-8'>
+                    {/* Logo */}
                     <div className='text-2xl flex items-center gap-2 font-bold uppercase'>
                         <IoFastFoodOutline className='text-orange-400' />
                         <p>FoodieGo</p>
                     </div>
+
+                    {/* Navigation Links */}
                     <div className='hidden md:block'>
                         <ul className='flex items-center gap-6'>
                             {links.map((link, index) => (
@@ -31,7 +54,7 @@ const NavBar = () => {
                                     <a
                                         href={link.href}
                                         title={link.tooltip}
-                                        className='inline-block py-1 px-3 text-gray-700 hover:text-red-500 '
+                                        className='inline-block py-1 px-3 text-gray-700 hover:text-red-500'
                                     >
                                         {link.title}
                                     </a>
@@ -39,33 +62,43 @@ const NavBar = () => {
                             ))}
                         </ul>
                     </div>
+
+                    {/* Right Icons and Auth Button */}
                     <div className='flex items-center gap-4'>
                         {/* Search Button */}
-                        <button className=''>
+                        <button>
                             <CiSearch className='text-2xl text-gray-700 hover:bg-orange-500 rounded-full hover:p-1 duration-200' />
                         </button>
 
                         {/* Cart Button */}
-                        <button className=''>
-                            <PiShoppingCartThin className='text-2xl text-gray-700 hover:bg-orange-500 rounded-full hover:p-1 duration-200' />
+                        <button>
+                            <PiShoppingCartThin className='text-2xl text-gray-700 hover:bg-orange-500 rounded-full hover:p-1 duration-200' onClick={()=>{navigate('/cart')}}/>
                         </button>
 
-                        {/* Login Button */}
-                        <Button  onClick={() => navigate('/login')}
-                            className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
-                            Login
-                        </Button>
+                        {/* Login/Logout Button */}
+                        {/* <Button
+                            onClick={handleAuth}
+                            className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'
+                        >
+                            {isLoggedIn ? 'Sign Out' : 'Login'}
+                        </Button> */}
+                        <ProfileMenu />
                     </div>
 
+<<<<<<< HEAD
+=======
+                    {/* Mobile Menu Toggle */}
+>>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
                     <div className='md:hidden' onClick={() => setOpen(!open)}>
                         <MdMenu className='text-2xl hover:bg-orange-500 rounded-full hover:p-1 duration-200' />
                     </div>
                 </div>
             </nav>
 
+            {/* Responsive Menu Component */}
             <ResponsiveMenu open={open} links={links} />
         </>
-    )
-}
+    );
+};
 
-export default NavBar
+export default NavBar;

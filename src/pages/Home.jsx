@@ -8,11 +8,10 @@ import MenuItems from '../components/MenuItems'
 const Home = () => {
   return (
     <div>
-        {/* <NavBar /> */}
+        <NavBar />
         <CategoryList />
-        {/* <RestaurantList /> */}
+        <RestaurantList />
         <MenuItems />
-        
     </div>
   )
 }

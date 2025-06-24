@@ -4,6 +4,8 @@ import { IoFastFoodOutline } from "react-icons/io5";
 const Signup = () => {
     //password matching
     const [signupData, setSignupData] = useState({
+        fisrt_name: '',
+        last_name: '',
         email: '',
         name: '',
         username: '',
@@ -52,16 +54,24 @@ const Signup = () => {
                 </div>
 
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border p-5 rounded-lg border-gray-300">
                     <form className="space-y-6" method="POST" onSubmit={handleSubmit}>
                         <div>
-                            <label for="email" className="block text-sm/6 font-medium text-gray-900">Email address</label>
+                            <label for="first_name" className="block text-sm/6 font-medium text-gray-900">First Name</label>
                             <div className="mt-2">
-                                <input type="email" name="email" id="email" required className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" onChange={handleChange}/>
+                                <input type="text" name="first_name" id="first_name"  required className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" onChange={handleChange}/>
+                            </div>
+                            <label for="last_name" className="block text-sm/6 font-medium text-gray-900">Last Name</label>
+                            <div className="mt-2">
+                                <input type="text" name="last_name" id="last_name"  required className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" onChange={handleChange}/>
                             </div>
                             <label for="username" className="block text-sm/6 font-medium text-gray-900">Username</label>
                             <div className="mt-2">
                                 <input type="text" name="username" id="username"  required className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" onChange={handleChange}/>
+                            </div>
+                            <label for="email" className="block text-sm/6 font-medium text-gray-900">Email address</label>
+                            <div className="mt-2">
+                                <input type="email" name="email" id="email" required className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" onChange={handleChange}/>
                             </div>
                             <label for="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
                             <div className="mt-2">
