@@ -15,6 +15,7 @@ const NavBar = () => {
         { title: "Category", href: "/categories", tooltip: "Browse Categories" },
         { title: "My Orders", href: "/orders", tooltip: "See Your Orders" },
     ];
+    
     return (
         <>
             <nav>
@@ -55,7 +56,6 @@ const NavBar = () => {
                             Login
                         </Button>
                     </div>
-
 
                     <div className='md:hidden' onClick={() => setOpen(!open)}>
                         <MdMenu className='text-2xl hover:bg-orange-500 rounded-full hover:p-1 duration-200' />

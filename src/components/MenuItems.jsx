@@ -36,7 +36,7 @@ const MenuItems = () => {
                         '>
                 {menuItems.length > 0 ? (
                     menuItems.map((item, index) => (
-                        <MenuItemCard items={item} />
+                        <MenuItemCard key={index} items={item} />
                     ))
                 ) : (<p className="w-full items-center text-primary font-medium text-center">
                         No Items found
