@@ -5,7 +5,7 @@ import { MdMenu } from "react-icons/md";
 import { IoFastFoodOutline } from "react-icons/io5";
 import ResponsiveMenu from './ResponsiveMenu';
 import { Button } from '@chakra-ui/react';
-import { AuthenticationHook } from './ContextAuthentication'; // Custom hook from context
+import { AuthenticationHook } from './ContextAuthentication'; 
 import { useNavigate } from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
 
@@ -16,12 +16,8 @@ const NavBar = () => {
     const links = [
         { title: "Home", href: "/home", tooltip: "Go to Home" },
         { title: "Restaurants", href: "/restaurants", tooltip: "View Restaurants" },
-        { title: "Category", href: "/categories", tooltip: "Browse Categories" },
         { title: "My Orders", href: "/orders", tooltip: "See Your Orders" },
     ];
-<<<<<<< HEAD
-    
-=======
 
     const handleAuth = () => {
         if (isLoggedIn) {
@@ -35,7 +31,6 @@ const NavBar = () => {
         }
     };
 
->>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
     return (
         <>
             <nav>
@@ -85,16 +80,12 @@ const NavBar = () => {
                         <ProfileMenu />
                     </div>
 
-<<<<<<< HEAD
-=======
                     {/* Mobile Menu Toggle */}
->>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
                     <div className='md:hidden' onClick={() => setOpen(!open)}>
                         <MdMenu className='text-2xl hover:bg-orange-500 rounded-full hover:p-1 duration-200' />
                     </div>
                 </div>
             </nav>
-
             {/* Responsive Menu Component */}
             <ResponsiveMenu open={open} links={links} />
         </>

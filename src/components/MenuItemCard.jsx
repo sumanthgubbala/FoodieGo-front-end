@@ -2,6 +2,7 @@ import { Button, Image } from "@chakra-ui/react";
 import React from "react";
 import { useCart } from "./CartContext";
 import axios from "axios";
+import { addItemsToCart } from "../utils/apis";
 
 const MenuItemCard = ({ items }) => {
     const { addToCart } = useCart();
@@ -22,8 +23,9 @@ const MenuItemCard = ({ items }) => {
         };
 
         try {
-            const response = await axios.post("http://localhost:8080/cart/add", cartItemDTO);
-            addToCart(response.data);
+            const response = await addItemsToCart(cartItemDTO);
+            addToCart(response);
+            alert("Item added to cart successfully!");
         } catch (error) {
             console.error("Error saving to DB:", error.response?.data || error.message);
             alert("Failed to add item to cart. Please try again.");

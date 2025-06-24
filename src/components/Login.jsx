@@ -7,12 +7,9 @@ import {
 } from '@chakra-ui/react'
 import '../design/login.css'
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-=======
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AuthenticationHook } from './ContextAuthentication';
 import NavBar from './NavBar';
->>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
 
 const Login = () => {
 
@@ -21,7 +18,7 @@ const Login = () => {
         username: '',
         password: ''
     });
-    sessionStorage.setItem('username', formData.username);
+   
     const { login, setIsLoggedIn } = AuthenticationHook();
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -34,8 +31,9 @@ const Login = () => {
         console.log(formData);
         try {
             const basicAuth = 'Basic ' + btoa(`${formData.username}:${formData.password}`);
+            sessionStorage.setItem('auth', basicAuth);
             console.log(basicAuth);
-            const response = await fetch('http://localhost:8080/menuItems/all', {
+            const response = await fetch('http://localhost:1234/user/me', {
 
                 headers: {
                     Authorization: basicAuth
@@ -45,10 +43,15 @@ const Login = () => {
             if (!response.ok) {
                 throw new Error('networak error');
             }
-            navigate('/home');
-            login(formData.username);
+            
             const res = await response.json();
             console.log(res);
+            sessionStorage.setItem('username', res.name);
+            sessionStorage.setItem('userId', res.id);
+            login(res.name,res.id);
+            navigate('/home');
+            
+            
         }
         catch (err) {
             window.alert('Invalid username or password');
@@ -58,35 +61,6 @@ const Login = () => {
         }
     }
     return (
-<<<<<<< HEAD
-        <div className='main-cont '>
-            <Container className='login-cont items-center'>
-                <Heading className='mb-4 text-2xl  text-center text-yellow-400 font-semibold  hover:text-yellow-200'>
-                    Login
-                </Heading>
-                <form action="" onSubmit={submitHandler} className='border-2 rounded-md bg-transparent p-10 font-semibold'>
-                    <FormControl className='form '>
-                        <FormLabel htmlFor='username'
-                            className='text-2xl text-red-400  font-semibold'
-                        >Username</FormLabel>
-                        <Input id='username' type='text' name='username' value={formData.username} onChange={handleChange} width={'15.0'} border={'black 1px solid'}
-                            className=' p-1 mt-2 ' required />
-                        <FormLabel htmlFor='password' className='mt-3'>Password</FormLabel>
-                        <Input id='password' type='password' name='password' value={formData.password} onChange={handleChange} border={'black 1px solid'} width={'15.0'}
-                            className=' p-1 mt-2 rounded-md' required />
-                        <div class="text-sm">
-                                    <a href="#" class="font-semibold text-red-600 hover:text-indigo-500">Forgot password?</a>
-                        </div>
-                        <Container mt={8} gap={4}>
-                            <Button type='submit' className='mt-3 text-white bg-orange-400 border-2 border-orange-500 hover:bg-white hover:text-orange-400 font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'>
-                                Login
-                            </Button>
-                        </Container>
-                    </FormControl>
-                </form>
-                Dont have an account? <a href="/signup" className='text-orange-500 font-semibold'>Sign Up</a>
-            </Container>
-=======
         <div className='min-h-screen flex items-center justify-center bg-white px-4 sm:justify-start sm:pl-32 main-cont'>
             <div class="w-full max-w-md">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
@@ -133,7 +107,6 @@ const Login = () => {
                 </div>
 
             </div>
->>>>>>> 5b8e5758c8e5f2dd4aa8fb156e911d1998521dc6
         </div>
     )
 }

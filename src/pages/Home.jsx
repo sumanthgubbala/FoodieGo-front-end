@@ -10,8 +10,9 @@ const Home = () => {
     <div>
         <NavBar />
         <CategoryList />
-        <RestaurantList />
         <MenuItems />
+        <RestaurantList />
+        
     </div>
   )
 }
