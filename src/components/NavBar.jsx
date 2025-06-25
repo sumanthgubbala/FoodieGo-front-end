@@ -18,6 +18,15 @@ const NavBar = () => {
         { title: "Restaurants", href: "/restaurants", tooltip: "View Restaurants" },
         { title: "My Orders", href: "/orders", tooltip: "See Your Orders" },
     ];
+    const ownerLinks = [
+        { title: "Dashboard", href: "/dashboard", tooltip: "Owner Dashboard" },
+        { title: "Add Restaurant", href: "/add-restaurant", tooltip: "Add New Restaurant" },
+        { title: "Manage Restaurants", href: "/manage-restaurants", tooltip: "Manage Your Restaurants" },
+        { title: "Profile", href: "/profile", tooltip: "View Your Profile" },
+    ]
+
+    const isOwner = isLoggedIn && sessionStorage.getItem("role") === "SERVICE"; // Check if user is an owner
+    const displayedLinks = isOwner ? ownerLinks : links;
 
     const handleAuth = () => {
         if (isLoggedIn) {
@@ -44,7 +53,7 @@ const NavBar = () => {
                     {/* Navigation Links */}
                     <div className='hidden md:block'>
                         <ul className='flex items-center gap-6'>
-                            {links.map((link, index) => (
+                            {displayedLinks.map((link, index) => (
                                 <li key={index}>
                                     <a
                                         href={link.href}
@@ -71,13 +80,19 @@ const NavBar = () => {
                         </button>
 
                         {/* Login/Logout Button */}
-                        {/* <Button
-                            onClick={handleAuth}
-                            className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'
-                        >
-                            {isLoggedIn ? 'Sign Out' : 'Login'}
-                        </Button> */}
-                        <ProfileMenu />
+                        {
+                            isLoggedIn ? (
+                                <ProfileMenu />
+                            ) : (
+                                <Button
+                                    onClick={handleAuth}
+                                    className='group text-orange-500 border-2 border-orange-500 hover:bg-orange-500 hover:text-white font-semibold rounded-md px-6 py-2 duration-200 hidden md:block'
+                                >
+                                    Login
+                                </Button>
+                            )
+                        }
+                       
                     </div>
 
                     {/* Mobile Menu Toggle */}

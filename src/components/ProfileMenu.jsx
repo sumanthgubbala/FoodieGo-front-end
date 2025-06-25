@@ -23,6 +23,9 @@ const ProfileMenu = () => {
       logout();
       setIsLoggedIn(false);
       sessionStorage.removeItem('isLoggedIn');
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('userId');
+      
       navigate('/');
     } else {
       navigate('/login');

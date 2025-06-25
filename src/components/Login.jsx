@@ -48,6 +48,7 @@ const Login = () => {
             console.log(res);
             sessionStorage.setItem('username', res.name);
             sessionStorage.setItem('userId', res.id);
+            sessionStorage.setItem('role', res.role);
             login(res.name,res.id);
             navigate('/home');
             

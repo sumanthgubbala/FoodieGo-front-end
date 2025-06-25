@@ -139,3 +139,76 @@ export const getAllOrdersByUserId = async(userId) => {
         throw error;
     }
 }
+
+export const GetRestaurantsByOwnerId = async(ownerId) => {
+    try {
+        const response = await axios.get(`http://localhost:1234/restaurant/user/${ownerId}`, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Restaurants fetched successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching restaurants:", error.response?.data || error.message);
+        throw error;
+    }
+}
+
+export const AddRestaurant = async(restaurantData) => {
+    try {
+        const response = await axios.post("http://localhost:1234/restaurant/add", restaurantData, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Restaurant added successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error adding restaurant:", error.response?.data || error.message);
+        throw error;
+    }
+}
+
+export const GetRestaurantById = async(id) => {
+    try {
+        const response = await axios.get(`http://localhost:1234/restaurant/${id}`, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Restaurant fetched successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching restaurant:", error.response?.data || error.message);
+        throw error;
+    }
+}
+export const UpdateRestaurant = async(restaurantData) => {
+    try {
+        const response = await axios.put("http://localhost:1234/restaurant/update", restaurantData, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Restaurant updated successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating restaurant:", error.response?.data || error.message);
+        throw error;
+    }
+}
+export const GetMenuItemsByRestaurantId = async(restaurantId) => {
+    try {
+        const response = await axios.get(`http://localhost:1234/menuItems/restaurant/${restaurantId}`, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Menu items fetched successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching menu items:", error.response?.data || error.message);
+        throw error;
+    }
+}

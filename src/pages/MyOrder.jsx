@@ -51,7 +51,7 @@ const MyOrder = () => {
                                         {batch.orderStatus}
                                     </span>
                                 </p>
-                                <p className="text-gray-700 mb-2">Total Amount: ₹{batch.totalAmount}</p>
+                                <p className="text-gray-500 mb-2">Total Amount: ₹ <span className="text-orange-500 mb-2">{batch.totalAmount}</span> </p>
                                 {batch.orders.map((order, index) => (
                                     <div key={index} className="mt-4 border-t pt-3">
                                         <h3 className="text-md font-semibold text-gray-800">

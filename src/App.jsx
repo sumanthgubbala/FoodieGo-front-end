@@ -8,7 +8,12 @@ import LandingPage from './components/LandingPage';
 import Cart from './components/Cart';
 import CartPage from './pages/CartPage';
 import MyOrder from './pages/MyOrder';
+import Restaurant from './pages/Restaurant';
+import DashBoard from './pages/DashBoard';
+import ManageRestaurant from './pages/ManageRestaurant';
+import EditRestaurant from './components/EditRestaurant';
 function App() {
+
   return (
     <>
       <Router>
@@ -19,6 +24,10 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/cart" element={<CartPage/>}/>
           <Route path="/orders" element={<MyOrder/>}/>
+          <Route path="/add-restaurant" element={<Restaurant />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/manage-restaurants" element={<ManageRestaurant />} />
+          <Route path="/restaurant/edit/:id" element={<EditRestaurant />} />
         </Routes>
       </Router>
     </>
