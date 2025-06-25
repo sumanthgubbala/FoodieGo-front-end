@@ -40,14 +40,16 @@ const DashBoard = () => {
         <div className='mt-10 px-6'>
             <h2 className='text-2xl font-semibold mb-5'>Your Restaurants</h2>
             {restaurantData.length > 0 ? (
-                <Link to='/rest' className='grid grid-cols-1 
+                <div className='grid grid-cols-1 
                         sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
                         gap-7 mt-3
                         '>
                     {restaurantData.map((restaurant, index) => (
-                        <RestaurantCard key={index} restaurant={restaurant} />
+                        <Link to={`/orders-request?restaurantId=${restaurant.id}`} key={index} className='no-underline'>
+                            <RestaurantCard key={index} restaurant={restaurant} />
+                        </Link>
                     ))}
-                </Link>
+                </div>
             ) : (
                 <p className='text-gray-500'>No restaurants found.</p>
             )}

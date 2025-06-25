@@ -212,3 +212,17 @@ export const GetMenuItemsByRestaurantId = async(restaurantId) => {
         throw error;
     }
 }
+export const GetOrderRequests = async(restaurantId) => {
+    try {
+        const response = await axios.get(`http://localhost:1234/orders/restaurant/${restaurantId}`, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Order requests fetched successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching order requests:", error.response?.data || error.message);
+        throw error;
+    }
+}

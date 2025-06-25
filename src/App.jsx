@@ -12,6 +12,7 @@ import Restaurant from './pages/Restaurant';
 import DashBoard from './pages/DashBoard';
 import ManageRestaurant from './pages/ManageRestaurant';
 import EditRestaurant from './components/EditRestaurant';
+import OrderRequests from './pages/OrderRequests';
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/manage-restaurants" element={<ManageRestaurant />} />
           <Route path="/restaurant/edit/:id" element={<EditRestaurant />} />
+          <Route path="/orders-request" element={<OrderRequests />} />
         </Routes>
       </Router>
     </>
