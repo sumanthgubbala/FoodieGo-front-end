@@ -4,6 +4,29 @@ import axios from "axios";
 
 const auth = sessionStorage.getItem('auth');
 
+export const SignupApi = async(userData) => {
+    const signupData = {
+        firstName: userData.first_name,
+        lastName: userData.last_name,
+        userName: userData.username,
+        email: userData.email,
+        password: userData.password,
+        address: userData.address,
+        phoneNumber: userData.phoneNumber,
+        role: userData.role
+    };
+    console.log("Signup Data:", signupData);
+    try {
+        const response = await axios.post("http://localhost:1234/user/register", signupData, {
+        });
+        console.log("User signed up successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error signing up user:", error.response?.data || error.message);
+        throw error;
+    }
+}
+
 const GetCategory = async()  =>{
 
     try{
@@ -223,6 +246,22 @@ export const GetOrderRequests = async(restaurantId) => {
         return response.data;
     } catch (error) {
         console.error("Error fetching order requests:", error.response?.data || error.message);
+        throw error;
+    }
+}
+
+export const UpdateOrderStatus = async(orderId, newStatus) => {
+    try {
+        console.log("Updating order status for orderId:", orderId, "to newStatus:", newStatus);
+        const response = await axios.put("http://localhost:1234/orders/update", { id:orderId, orderStatus: newStatus }, {
+            headers: {
+                'Authorization': auth
+            }
+        });
+        console.log("Order status updated successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating order status:", error.response?.data || error.message);
         throw error;
     }
 }

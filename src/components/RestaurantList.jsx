@@ -10,7 +10,8 @@ const RestaurantList = () => {
             setRestaurants(response);
         }
         fetchRestaurants();
-    },[])
+    },[]);
+    console.log(restaurants);
     return (
         <div className='mt-5 px-6'>
             <h2 className='font-bold text-2xl'>Popular Restaurant</h2>
